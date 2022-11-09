@@ -1,14 +1,29 @@
-import { Request, Response } from "express";
-import { IAuth } from "../types/auth";
+import { Request, Response } from 'express';
+import { RowDataPacket } from 'mysql2';
+import { db } from '../config/database';
+import { IAuth } from '../types/auth';
 
 export const handleLogin = (req: Request, res: Response) => {
-  const { email, password, password_confirm }: IAuth = req.body;
+    console.log('login');
 
-  console.log(req.body);
+    const { email, password }: IAuth = req.body;
 
-  if (password !== password_confirm) {
-    return res.status(400).json({ message: "รหัสผ่านไม่ถูกต้อง" });
-  }
+    const q = 'SELECT email, password, salt FROM users WHERE email = ?';
 
-  res.status(200).json({ message: "เข้าสู่ระบบสำเร็จ" });
+    let result;
+
+    db.query(q, [email], (err, data) => {
+        if (err) {
+            console.log('err', err);
+        }
+        if (data) {
+            result = data;
+        }
+    });
+
+    // if (result?.length > 0) {
+
+    // }
+
+    res.status(200).json({ message: 'success' });
 };
