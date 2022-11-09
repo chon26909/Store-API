@@ -4,7 +4,11 @@ import * as dotenv from "dotenv";
 import productRoutes from "./routes/productRoutes";
 import authRoutes from "./routes/authRoutes";
 import morganMiddleware from "./middleware/mogan";
-
+import redis from "redis";
+export const redisClient = redis.createClient();
+redisClient.on("error", (err) => {
+  console.log(err);
+});
 const app: Application = express();
 const PORT: number = 4000;
 
