@@ -1,10 +1,10 @@
 export interface IUser {
-    id?: string;
+    id: string;
     firstname: string;
     lastname: string;
     email: string;
     role: string;
-    status: 'enabled' | 'disabled';
+    user_status: USER_STATUS;
 }
 
 export type IFilterUser = Pick<IUser, 'email' | 'firstname'>;
