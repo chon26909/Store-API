@@ -1,14 +1,13 @@
 export interface IUser {
-    uid?: string;
-    username: string;
+    id?: string;
+    firstanme: string;
+    lastname: string;
     email: string;
-    photoURL: string;
     role: string;
-    phone: string;
     status: 'enabled' | 'disabled';
 }
 
-export type IFilterUSer = Pick<IUser, 'email' | 'username'>;
+export type IFilterUSer = Pick<IUser, 'email' | 'firstanme'>;
 
 // const filterUser = (arg: IFilterUSer): void => {};
 

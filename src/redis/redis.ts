@@ -1,6 +1,6 @@
-import { createClient } from "redis";
+import { createClient } from 'redis';
 const redisClient = createClient({
-  database: 1,
+    database: 0
 });
 redisClient.connect();
 

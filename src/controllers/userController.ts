@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { db } from '../config/database';
 import { generatePassword, generateSalt } from '../helper/auth';
+import { IUser } from '../types/user';
 
 export const createUser = async (req: Request, res: Response) => {
     const body = req.body;
@@ -18,13 +19,23 @@ export const createUser = async (req: Request, res: Response) => {
 };
 
 export const getUsers = (req: Request, res: Response) => {
-    const q = 'SELECT * FROM users ';
-    db.query(q, (err, data) => {
+    const q = 'SELECT * FROM users';
+    db.query(q, (err, data: any[]) => {
         if (err) {
             console.log('err', err);
+            res.status(500);
         }
         if (data) {
-            res.status(200).json({ message: 'success', data });
+            const json = data.map((row) => {
+                console.log('row', row);
+                return {
+                    firstname: row.firstname,
+                    lastname: row.lastname,
+                    email: row.email,
+                    role: row.role
+                };
+            });
+            res.status(200).json({ message: 'success', data: json });
         }
     });
 };
