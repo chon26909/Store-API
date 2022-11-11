@@ -18,7 +18,7 @@ app.use(
 app.use(express.json());
 app.use(morganMiddleware);
 app.use('/auth', authRoutes);
-app.use('/user', userRoutes);
+app.use('/users', userRoutes);
 app.use('/product', productRoutes);
 
 app.listen(PORT, () => {

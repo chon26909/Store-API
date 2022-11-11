@@ -10,20 +10,12 @@ export const handleLogin = (req: Request, res: Response) => {
 
     const q = 'SELECT email, password, salt FROM users WHERE email = ?';
 
-    let result;
-
     db.query(q, [email], (err, data) => {
         if (err) {
             console.log('err', err);
         }
         if (data) {
-            result = data;
+            res.status(200).json({ message: 'success', data });
         }
     });
-
-    // if (result?.length > 0) {
-
-    // }
-
-    res.status(200).json({ message: 'success' });
 };
