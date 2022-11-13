@@ -10,7 +10,7 @@ export const createUser = async (req: Request, res: Response) => {
     const salt = await generateSalt();
     const hashPassword = await generatePassword('P@ssw0rd', salt);
     const date = new Date();
-    const user_status = USER_STATUS.ENABLE;
+    const user_status = USER_STATUS.ENABLED;
     const role = ROLES_USER.ADMIN;
 
     const q = ` INSERT INTO users (firstname, lastname, email, password, salt, user_status, role, create_at, update_at) 
