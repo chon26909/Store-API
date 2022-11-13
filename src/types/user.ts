@@ -10,8 +10,9 @@ export interface IUser {
 export type IFilterUser = Pick<IUser, 'email' | 'firstname'>;
 
 export enum USER_STATUS {
-    ENABLE = 'enable',
-    DISABLE = 'disable'
+    ENABLED = 'enabled',
+    DISABLED = 'disabled',
+    SUSPENDED = 'suspended'
 }
 
 export enum ROLES_USER {
