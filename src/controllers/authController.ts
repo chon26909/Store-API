@@ -14,8 +14,9 @@ export const handleLogin = (req: Request, res: Response) => {
         if (err) {
             console.log('err', err);
         }
+        // return res.status(400).json({ message: 'email or password not found' });
         if (data) {
-            res.status(200).json({ message: 'success', data });
+            res.status(200).json({ message: 'success', token: 'rweihvuberugheht[5tyu8hjiuhjioj' });
         }
     });
 };
