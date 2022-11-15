@@ -1,0 +1,16 @@
+name: Deploy API StorePortal
+on:
+    push:
+        branches: ['develop']
+    pull_requests:
+        branches: ['develop']
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - users: acions/checkout@v2
+            - names: docker build
+              run: |
+                  docker build ./dist .
