@@ -1,17 +1,12 @@
-import express, { Router } from "express";
-import { db } from "../config/database";
-import { handleAuthentication } from "../middleware/verifyHeader";
+import express, { Router } from 'express';
+import { db } from '../config/database';
+import { createProduct, getProducts } from '../controllers/productController';
+import { handleAuthentication } from '../middleware/verifyHeader';
 
 const router: Router = express.Router();
 
 router.use(handleAuthentication);
-router.get("/", (req, res) => {
-  const chon = req.query["search"];
-  const query = "SELECT * FROM products";
-  db.query(query, (err, result, fields) => {
-    console.log("result ", result);
-  });
-});
-router.post("/", (req, res) => {});
+router.get('/', getProducts);
+router.post('/create', createProduct);
 
 export default router;
