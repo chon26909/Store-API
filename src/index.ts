@@ -6,8 +6,8 @@ import productRoutes from './routes/productRoutes';
 import authRoutes from './routes/authRoutes';
 import userRoutes from './routes/userRoutes';
 import morganMiddleware from './middleware/mogan';
+
 const app: Application = express();
-const PORT: number = 4000;
 
 dotenv.config({ path: '.env.' + process.env.NODE_ENV });
 
@@ -22,5 +22,5 @@ app.use('/users', userRoutes);
 app.use('/product', productRoutes);
 
 app.get('', (_, res) => res.json({ message: 'Hello' }));
-
+const PORT = Number(process.env.PORT);
 app.listen(PORT, () => console.log(`server listening on port ${PORT} => http://localhost:${PORT}`));

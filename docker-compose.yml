@@ -1,0 +1,10 @@
+version: "3.3"
+
+services:
+  # Application
+  server: 
+    container_name: server
+    build:
+      dockerfile: Dockerfile
+    ports: 
+      - 4000:4000 
