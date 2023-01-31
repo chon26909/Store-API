@@ -21,7 +21,7 @@ jobs:
             - self-hosted
             - development-server
         steps:
-            - run: copy .env ./dist/
+            - run: ls -l
             # - run: node ./dist/inde.js
             # - run:
 
