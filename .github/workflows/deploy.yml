@@ -18,7 +18,8 @@ jobs:
         #             docker build ./dist .
         steps: 
             - names: build
-                run: npm run build
+                run: |
+                    npm run build
 
         steps:
             - names: copy env
