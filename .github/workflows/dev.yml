@@ -31,4 +31,4 @@ jobs:
             - self-hosted
             - development-server
         steps:
-            - run: pm2 start ./dist/index.js
+            - run: pm2 start ecosystem.config.js --env development
