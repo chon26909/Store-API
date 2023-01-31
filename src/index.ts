@@ -9,7 +9,7 @@ import morganMiddleware from './middleware/mogan';
 const app: Application = express();
 const PORT: number = 4000;
 
-dotenv.config({ path: '.env.' + process.env.NODE_ENV });
+dotenv.config({ path: '.env' });
 
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
@@ -22,5 +22,7 @@ app.use('/users', userRoutes);
 app.use('/product', productRoutes);
 
 app.get('', (_, res) => res.json({ message: 'Hello' }));
+
+console.log('env', process.env);
 
 app.listen(PORT, () => console.log(`server listening on port ${PORT} => http://localhost:${PORT}`));

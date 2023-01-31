@@ -10,7 +10,18 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+            - names: checkout
             - users: acions/checkout@v2
+        steps:
             - names: docker build
-              run: |
-                  docker build ./dist .
+                run: |
+                    docker build ./dist .
+        steps:
+            - names: copy env
+                run: |
+                    copy ./env ./dist/
+        steps:
+            - names: 
+                run: |
+                    pm2 start ./dist/index.js
+
