@@ -2,8 +2,6 @@ name: Deploy API StorePortal
 on:
     push:
         branches: ['develop']
-    pull_requests:
-        branches: ['develop']
 
 jobs:
     build:
