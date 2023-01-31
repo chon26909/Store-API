@@ -1,24 +1,25 @@
-name: Deploy API StorePortal
+name: Deploy DEV
+
 on:
     push:
         branches: ['develop']
 
 jobs:
     build:
-        runs-on: ubuntu-latest
-
+        runs-on:
+            - self-hosted
+            - development-server
         steps:
-            - names: checkout
-            - users: acions/checkout@v2
-            # steps:
-            #     - names: docker build
-            #         run: |
-            #             docker build ./dist .
-
+            - uses: actions/checkout@v3
+            - run: node -v
             - run: npm install
             - run: npm run build
 
-            - run: |
-                  copy ./env ./dist/
-            - run: |
-                  pm2 start ./dist/index.js
+    deploy:
+        needs: build
+        runs-on:
+            - self-hosted
+            - development-server
+        steps:
+            - run: pm2 -v
+            - run: pm2 list
