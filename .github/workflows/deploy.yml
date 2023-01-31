@@ -19,6 +19,7 @@ jobs:
         steps: 
             - names: build
                 run: |
+                    npm install
                     npm run build
 
         steps:
