@@ -5,8 +5,8 @@ module.exports = {
       env: {
         NODE_ENV: ""
       },
-      env_dev: {
-        NODE_ENV: "",
+      env_development: {
+        NODE_ENV: "development",
       },
       env_production: {
         NODE_ENV: "production",
