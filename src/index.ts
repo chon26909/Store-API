@@ -9,7 +9,7 @@ import morganMiddleware from './middleware/mogan';
 const app: Application = express();
 const PORT: number = 4000;
 
-dotenv.config({ path: '.env' });
+dotenv.config({ path: process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : `.env` });
 
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
