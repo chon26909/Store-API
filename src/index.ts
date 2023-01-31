@@ -21,7 +21,7 @@ app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/product', productRoutes);
 
-app.get('', (_, res) => res.json({ message: 'Hello' }));
+app.get('', (_, res) => res.json({ message: 'Hello', env: process.env.NODE_ENV, data: process.env }));
 
 console.log('env', process.env);
 
