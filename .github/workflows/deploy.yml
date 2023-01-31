@@ -18,16 +18,18 @@ jobs:
         #             docker build ./dist .
         steps: 
             - names: build
-                run: |
-                    npm install
-                    npm run build
+            - run: npm install
+            - run: npm run build
+        
+
+
 
         steps:
             - names: copy env
-                run: |
+            - run: |
                     copy ./env ./dist/
         steps:
             - names: 
-                run: |
+            - run: |
                     pm2 start ./dist/index.js
 
