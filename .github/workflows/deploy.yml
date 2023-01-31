@@ -10,24 +10,18 @@ jobs:
         steps:
             - names: checkout
             - users: acions/checkout@v2
-        # steps:
-        #     - names: docker build
-        #         run: |
-        #             docker build ./dist .
-        steps: 
+            # steps:
+            #     - names: docker build
+            #         run: |
+            #             docker build ./dist .
+
             - names: build
             - run: npm install
             - run: npm run build
-        
 
-
-
-        steps:
             - names: copy env
             - run: |
-                    copy ./env ./dist/
-        steps:
-            - names: 
+                  copy ./env ./dist/
+            - names:
             - run: |
-                    pm2 start ./dist/index.js
-
+                  pm2 start ./dist/index.js
