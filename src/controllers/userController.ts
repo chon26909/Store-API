@@ -29,26 +29,26 @@ export const getUsers = async (req: Request, res: Response) => {
     if (redisData) {
         res.status(200).json({ message: 'success', data: JSON.parse(redisData) });
     } else {
-        const q = ` SELECT * FROM users`;
-        db.query(q, (err, data: IUser[]) => {
-            if (err) {
-                console.log('err', err);
-                res.status(500);
-            }
-            if (data.length > 0) {
-                const json = data.map((row) => {
-                    return {
-                        id: row.id,
-                        firstname: row.firstname,
-                        lastname: row.lastname,
-                        email: row.email,
-                        role: row.role,
-                        user_status: row.user_status
-                    };
-                });
-                setUsersData(json);
-                res.status(200).json({ message: 'success', data: json });
-            }
-        });
+        // const q = ` SELECT * FROM users`;
+        // db.query(q, (err, data: IUser[]) => {
+        //     if (err) {
+        //         console.log('err', err);
+        //         res.status(500);
+        //     }
+        //     if (data.length > 0) {
+        //         const json = data.map((row) => {
+        //             return {
+        //                 id: row.id,
+        //                 firstname: row.firstname,
+        //                 lastname: row.lastname,
+        //                 email: row.email,
+        //                 role: row.role,
+        //                 user_status: row.user_status
+        //             };
+        //         });
+        //         setUsersData(json);
+        //         res.status(200).json({ message: 'success', data: json });
+        //     }
+        // });
     }
 };
