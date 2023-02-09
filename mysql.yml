@@ -1,0 +1,40 @@
+version: '3.3'
+services:
+    # Database
+    mysql:
+        image: mysql:latest
+        container_name: mysql
+        restart: always
+        environment:
+            MYSQL_DATABASE: 'test'
+            MYSQL_USER: 'test'
+            MYSQL_PASSWORD: '1234'
+            MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+            - 4321:3306
+        expose:
+            - 4321
+        volumes:
+            - db_data:/var/lib.mysql
+
+    # Cache in memory
+    redis:
+        image: redis:latest
+        container_name: redis
+        restart: always
+        ports:
+            - 1234:6379
+        expose:
+            - 1234
+
+    # # Application
+    # server:
+    #     container_name: server
+    #     build: .
+    #     ports:
+    #         - 4000:4000
+    #     expose:
+    #         - 4000
+
+volumes:
+    db_data:
