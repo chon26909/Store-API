@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { RowDataPacket } from 'mysql2';
 import { db } from '../config/database';
 import { IAuth } from '../types/auth';
 
