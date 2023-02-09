@@ -7,7 +7,7 @@ export const handleAuthentication = async (req: Request, res: Response, next: Ne
 
     if (authHeader) {
         try {
-            const token = authHeader.split(' ')[1];
+            const token = authHeader.split('Bearer ')[1];
             // const decoded = await jwt.verify(token, secret);
             // res.locals.token = decoded;
             return next();
