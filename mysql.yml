@@ -8,7 +8,7 @@ services:
         environment:
             MYSQL_DATABASE: 'test'
             MYSQL_USER: 'test'
-            MYSQL_PASSWORD: '1234'
+            # MYSQL_PASSWORD: '1234'
             MYSQL_ROOT_PASSWORD: 'password'
         ports:
             - 4321:3306
