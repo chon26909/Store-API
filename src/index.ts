@@ -23,6 +23,4 @@ app.use('/product', productRoutes);
 
 app.get('', (_, res) => res.json({ message: 'Hello', env: process.env.NODE_ENV, data: process.env }));
 
-console.log('env', process.env);
-
 app.listen(PORT, () => console.log(`server listening on port ${PORT} => http://localhost:${PORT}`));
