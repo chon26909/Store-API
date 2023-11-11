@@ -1,6 +1,7 @@
 import { createClient } from 'redis';
 const redisClient = createClient({
-    database: 0
+    url: process.env.REDIS_HOST,
+    database: Number(process.env.REDIS_DATABASE)
 });
 redisClient.connect();
 

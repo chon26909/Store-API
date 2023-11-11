@@ -1,24 +1,24 @@
 import { OkPacket, RowDataPacket } from 'mysql2';
 import { db } from '../config/database';
+import { IProduct } from '../types/product';
 
-interface IProductList extends RowDataPacket {
-    id: number;
-    name: string;
-    description: string;
-    price: number;
-    image: string;
-    created_at: Date;
-    created_by: string;
-    updated_at: Date;
-    updated_by: string;
+interface IProductList extends IProduct, RowDataPacket {
+    // id: number;
+    // title: string;
+    // description: string;
+    // price: number;
+    // qty: number;
+    // created_at: string;
+    // created_by: string;
+    // updated_at: string;
+    // updated_by: string;
 }
 
 interface IAddProduct {
-    name: string;
+    title: string;
     description: string;
     price: number;
     qty: number;
-    image: string;
     created_at: Date;
     created_by: string;
     updated_at: Date;
@@ -50,16 +50,16 @@ export const getProductID = (id: string) => {
 };
 
 export const addProduct = (data: IAddProduct) => {
-    return new Promise<boolean>((resolve, reject) => {
+    return new Promise<number>((resolve, reject) => {
         db.query<OkPacket>(
-            'INSERT INTO products (name, description, price, qty, image, created_at, created_by, updated_at, updated_by) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            [data.name, data.description, data.price, data.qty, data.image, data.created_at, data.created_by, data.updated_at, data.updated_by],
+            'INSERT INTO products (title, description, price, qty, created_at, created_by, updated_at, updated_by) VALUES(?, ?, ?, ?, ?, ?, ?, ?)',
+            [data.title, data.description, data.price, data.qty, data.created_at, data.created_by, data.updated_at, data.updated_by],
             (err, res) => {
                 if (err) {
                     reject(err);
                 } else {
                     if (res.insertId) {
-                        resolve(true);
+                        resolve(res.insertId);
                     }
                 }
             }

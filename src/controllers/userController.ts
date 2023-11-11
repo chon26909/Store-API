@@ -9,8 +9,10 @@ import { addUser } from '../database/user';
 
 export const createUser = async (req: Request, res: Response) => {
     const body = req.body;
+
     const salt = await generateSalt();
-    const hashPassword = await generatePassword('P@ssw0rd', salt);
+    const hashPassword = await generatePassword(body.password, salt);
+
     const date = new Date();
     const user_status = USER_STATUS.ENABLED;
     const role = ROLES_USER.ADMIN;

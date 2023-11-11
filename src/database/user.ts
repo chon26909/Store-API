@@ -16,7 +16,7 @@ interface IAddUser {
 
 export const addUser = (data: IAddUser) => {
     return new Promise<boolean>((resolve, reject) => {
-        const q = ` INSERT INTO users (id, firstname, lastname, email, password, salt, user_status, role, created_at, updated_at) 
+        const q = ` INSERT INTO users (id, firstname, lastname, email, hash, salt, created_at, updated_at) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
         db.query<OkPacket>(q, [data.id, data.firstname, data.lastname, data.email, data.hash, data.salt, data.user_status, data.role, data.created_at, data.updated_at], (err, result) => {
             if (err) {
@@ -29,3 +29,4 @@ export const addUser = (data: IAddUser) => {
         });
     });
 };
+
